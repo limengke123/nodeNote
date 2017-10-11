@@ -54,7 +54,26 @@ default: 3
 undefined
 >
 ```
+* console.log（console.info是别名） console.error(console.warn别名) 没什么好说，打印
 * console.dir(obj[, options]) 能把对象分层次打印出来，还能带颜色，option设置如下：
   1. showHidden - 如果为 true，则该对象中的不可枚举属性和 symbol 属性也会显示。默认为 false。
   2. depth - 告诉 util.inspect() 函数当格式化对象时要递归多少次。 这对于检查较大的复杂对象很有用。 默认为 2。 设为 null 可无限递归。
   3. colors - 如果为 true，则输出会带有 ANSI 颜色代码。 默认为 false。 颜色是可定制的，详见定制 util.inspect() 颜色。
+* console.time(label)  启动一个定时器，用以计算一个操作的持续时间。 定时器由一个唯一的 label 标识。 当调用 console.timeEnd() 时，可以使用相同的 label 来停止定时器，并以毫秒为单位将持续时间输出到 stdout。 定时器持续时间精确到亚毫秒。
+* console.timeEnd(label) 配合console.time使用，打印时间
+* console.trace([message][, ...args]) 打印字符串 'Trace :' 到 stderr ，并通过 util.format() 格式化消息与堆栈跟踪在代码中的当前位置。
+```js
+console.trace('Show me');
+// 打印: (堆栈跟踪会根据被调用的跟踪的位置而变化)
+//  Trace: Show me
+//    at repl:2:9
+//    at REPLServer.defaultEval (repl.js:248:27)
+//    at bound (domain.js:287:14)
+//    at REPLServer.runBound [as eval] (domain.js:300:12)
+//    at REPLServer.<anonymous> (repl.js:412:12)
+//    at emitOne (events.js:82:20)
+//    at REPLServer.emit (events.js:169:7)
+//    at REPLServer.Interface._onLine (readline.js:210:10)
+//    at REPLServer.Interface._line (readline.js:549:8)
+//    at REPLServer.Interface._ttyWrite (readline.js:826:14)
+```
